@@ -1,0 +1,22 @@
+<h1><%= @inn.name %></h1>
+<p class="lead"><%= @inn.full_address %></p>
+
+<section id="rooms">
+  <h2>Quartos</h2>
+  <div class="row">
+  <% @inn.inn_rooms.each do |room| %>
+    <div class="col-4">
+      <div class="card"> 
+        <% if room.photo.attached? %>
+          <%= image_tag room.photo, class: 'card-img-top' %>
+        <% end %>
+        <div class="card-body">
+          <%= link_to inn_dashboard_inn_room_path(room) do %>
+            <h2><%= room.name %></h2>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</section>

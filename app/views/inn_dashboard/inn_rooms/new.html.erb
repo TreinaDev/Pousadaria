@@ -1,0 +1,33 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to 'Gestão de Pousadas', inn_management_path %></li>
+    <li class="breadcrumb-item"><%= @inn.name %></li>
+    <li class="breadcrumb-item">Quartos</li>
+    <li class="breadcrumb-item active" aria-current="page">Novo Quarto</li>
+  </ol>
+</nav>
+<h1>Novo Quarto</h1>
+<%= render partial: 'shared/record_errors', locals: { record: @inn_room } %>
+<%= form_with(model: @inn_room, url: inn_dashboard_inns_inn_rooms_path) do |f| %>
+  <div class="mb-3">
+    <%= f.label :name, class: "form-label" %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :size, class: "form-label" %>
+    <%= f.text_field :size, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :guest_limit, class: "form-label"  %>
+    <%= f.text_field :guest_limit, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :daily_rate_cents, class: "form-label"  %>
+    <%= f.text_field :daily_rate_cents, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :photo, class: "form-label"  %>
+    <%= f.file_field :photo, class: "form-control" %>
+  </div>
+  <%= f.submit class: 'btn btn-success' %>
+<% end %>

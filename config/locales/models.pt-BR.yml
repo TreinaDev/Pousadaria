@@ -1,0 +1,37 @@
+pt-BR:
+  activerecord:
+    models:
+      inn: 
+        one: Pousada
+        other: Pousadas
+      inn_owner: 
+        one: Dono de Pousada
+        other: Donos de Pousadas
+      inn_room:
+        one: Quarto
+        other: Quartos
+    attributes:
+      inn_owner:
+        email: 'E-mail'
+        first_name: 'Nome'
+        last_name: 'Sobrenome'
+        document: 'CPF'
+        password: 'Senha'
+        password_confirmation: 'Confirme sua senha'
+      inn:
+        name: 'Nome Fantasia'
+        registration_number: 'CNPJ'
+        description: 'Descrição'
+      address:
+        postal_code: 'CEP'
+        address: 'Endereço'
+        neighborhood: 'Bairro'
+        number: 'Número'
+        city: 'Cidade'
+        state: 'Estado'
+      inn_room:
+        name: 'Nome'
+        size: 'Dimensão (m2)'
+        guest_limit: 'Máximo de Hóspedes'
+        photo: 'Foto'
+        daily_rate_cents: 'Valor Diária'

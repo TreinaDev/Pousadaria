@@ -1,0 +1,32 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to 'Gestão de Pousadas', inn_management_path %></li>
+    <li class="breadcrumb-item active" aria-current="page">Entrar</li>
+  </ol>
+</nav>
+<h1>Entrar</h1>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :email, class: 'form-label' %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, class: 'form-label' %>
+    <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <%= f.check_box :remember_me, class: "form-check-input" %>
+      <%= f.label :remember_me, class: "form-check-label" %>
+    </div>
+  <% end %>
+
+  <div class="actions my-3">
+    <%= f.submit "Entrar", class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<%= render "inn_owners/shared/links" %>

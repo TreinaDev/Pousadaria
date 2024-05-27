@@ -1,0 +1,39 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page"><%= link_to 'Gestão de Pousadas', inn_management_path %></li>
+  </ol>
+</nav>
+<% if inn_owner_signed_in? %>
+  <h1><%= @inn.name %></h1>
+  <p class="lead">CNPJ: <%= @inn.registration_number %></p>
+  <p class="lead">Endereço: <%= @inn.full_address %></p>
+  <%= link_to 'Editar Pousada', edit_inn_dashboard_inns_path, class: 'btn btn-primary' %>
+  <section id="rooms" class="mt-3">
+    <h2>Quartos</h2>
+    <div class="row my-3">
+    <% @inn.inn_rooms.each do |room| %>
+      <div class="col-4">
+        <div class="card"> 
+          <% if room.photo.attached? %>
+            <%= image_tag room.photo, class: 'card-img-top' %>
+          <% else %>
+            <%= image_tag 'no-picture.png', class: 'card-img-top' %>
+          <% end %>
+          <div class="card-body">
+            <%= link_to inn_dashboard_inn_room_path(room) do %>
+              <h2><%= room.name %></h2>
+            <% end %>
+            <span><%= InnRoom.human_attribute_name(:daily_rate_cents)%>: <%= number_to_currency room.daily_rate_cents%></span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+    <%= link_to 'Cadastrar Quarto', new_inn_dashboard_inns_inn_rooms_path, class: 'btn btn-primary' %>
+  </section>
+<% else %>
+  <h1>Pousadaria</h1>
+  <p class="lead mb-3">Entre para gerenciar sua pousada.</p>
+  <%= link_to 'Entrar', new_inn_owner_session_path, class: 'btn btn-primary' %>
+  <%= link_to 'Criar nova conta', new_inn_owner_registration_path, class: 'btn btn-success' %>
+<% end %>

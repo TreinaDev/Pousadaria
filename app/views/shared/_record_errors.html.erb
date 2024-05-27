@@ -1,0 +1,10 @@
+<% if record.errors.any? %>
+  <div class="alert alert-warning"role="alert">
+    <h4 class="alert-heading"><%= t('errors.template.header', model: record.class.model_name.human.downcase, count: record.errors.count) %></h4>
+    <ul class="list-unstyled">
+    <% record.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </url>
+  </div>
+<% end %>

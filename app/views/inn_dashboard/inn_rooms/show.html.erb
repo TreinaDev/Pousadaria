@@ -1,0 +1,24 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to 'Gestão de Pousadas', inn_management_path %></li>
+    <li class="breadcrumb-item"><%= @inn.name %></li>
+    <li class="breadcrumb-item">Quartos</li>
+    <li class="breadcrumb-item"  aria-current="page"><%= @inn_room.name %></li>
+  </ol>
+</nav>
+<h1><%= @inn_room.name %></h1>
+<% if @inn_room.photo.attached? %>
+  <%= image_tag @inn_room.photo, class: 'card-img-top' %>
+<% else %>
+<figure class="figure">
+  <%= image_tag 'no-picture.png', class: "figure-img img-fluid rounded", alt: 'Nenhuma foto cadastrada' %>
+  <figcaption class="figure-caption">Nenhuma foto cadastrada.</figcaption>
+</figure>
+  
+<% end %>
+<dl>
+  <dt><%= InnRoom.human_attribute_name(:size) %>:</dt> <dd><%= @inn_room.size %></dd>
+  <dt><%= InnRoom.human_attribute_name(:guest_limit) %>:</dt> <dd><%= @inn_room.guest_limit %></dd>
+  <dt><%= InnRoom.human_attribute_name(:daily_rate_cents) %>:</dt> <dd><%= number_to_currency @inn_room.daily_rate_cents %></dd>
+</dl>
+<%= link_to 'Editar', edit_inn_dashboard_inn_room_path(@inn_room), class: 'btn btn-primary' %>

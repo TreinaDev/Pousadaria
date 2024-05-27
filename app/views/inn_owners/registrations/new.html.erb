@@ -1,0 +1,57 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to 'Gestão de Pousadas', inn_management_path %></li>
+    <li class="breadcrumb-item active" aria-current="page">Criar Conta</li>
+  </ol>
+</nav>
+<h1>Criar Conta</h1>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "inn_owners/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :first_name, class: 'form-label'  %>
+    <%= f.text_field :first_name, autofocus: true, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name, class: 'form-label'  %>
+    <%= f.text_field :last_name, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :document, class: 'form-label'  %>
+    <%= f.text_field :document, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :email, class: 'form-label'  %>
+    <%= f.email_field :email, autocomplete: "email", class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :password, class: 'form-label'  %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, class: 'form-label'  %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+  </div>
+
+  <%= f.fields_for :inn, Inn.new do |inn_form| %>
+    <div class="field">
+      <%= inn_form.label :name, class: 'form-label'  %>
+      <%= inn_form.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= inn_form.label :registration_number, class: 'form-label'  %>
+      <%= inn_form.text_field :registration_number, class: 'form-control' %>
+    </div>
+  <% end %>
+
+  <div class="actions my-3">
+    <%= f.submit "Cadastrar", class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<%= render "inn_owners/shared/links" %>
