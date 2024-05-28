@@ -47,6 +47,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "capybara"
   gem "debug", platforms: %i[ mri windows ]
+  gem 'byebug'
 end
 
 group :test do
